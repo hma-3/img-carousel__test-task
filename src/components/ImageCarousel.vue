@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { defineProps, ref, computed, onMounted, onUnmounted } from 'vue'
-import { Image } from './types/images.ts'
+import { type Image } from '../types/images.ts'
 import { PhCaretRight, PhCaretLeft } from '@phosphor-icons/vue'
 import SelectedImgUrlsList from './SelectedImgUrlsList.vue'
 
@@ -8,7 +8,7 @@ const { images } = defineProps<{ images: Image[] }>()
 
 const currentIndex = ref(0)
 const viewportWidth = ref(window.innerWidth)
-const selectedImageUrls: string[] = ref([])
+const selectedImageUrls = ref<string[]>([])
 
 const visibleImagesCount = computed(() => {
   if (viewportWidth.value < 768) {
@@ -25,14 +25,14 @@ const getSmallerPicture = (url: string) => {
   const result = url.split('/')
 
   if (visibleImagesCount.value === 5) {
-    result[result.length - 2] = 300
-    result[result.length - 1] = 200
+    result[result.length - 2] = '300'
+    result[result.length - 1] = '200'
   } else if (visibleImagesCount.value === 3) {
-    result[result.length - 2] = 350
-    result[result.length - 1] = 250
+    result[result.length - 2] = '350'
+    result[result.length - 1] = '250'
   } else {
-    result[result.length - 2] = 590
-    result[result.length - 1] = 400
+    result[result.length - 2] = '590'
+    result[result.length - 1] = '400'
   }
 
   return result.join('/')

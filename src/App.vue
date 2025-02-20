@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import * as imagesApi from './api/images'
-import { Image } from './types/images.ts'
+import { type Image } from './types/images.ts'
 import ImageCarousel from './components/ImageCarousel.vue'
 import { PhLinkedinLogo, PhGithubLogo, PhTelegramLogo } from '@phosphor-icons/vue'
 
@@ -16,7 +16,7 @@ onMounted(async () => {
 
     images.value = await imagesApi.getListImages({ limit: 15 })
   } catch (error) {
-    errorMessage.value = error
+    errorMessage.value = String(error)
   } finally {
     isLoading.value = false
   }
