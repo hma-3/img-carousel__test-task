@@ -1,39 +1,49 @@
-# img-carousel__test-task
+# Image Carousel (Test task)
 
-This template should help get you started developing with Vue 3 in Vite.
+## Table of contents
 
-## Recommended IDE Setup
+- [Links](#links)
+- [Project Setup](#project-setup)
+- [Built with](#built-with)
+- [Author](#author)
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Links
 
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
+- [Solution URL](https://github.com/hma-3/img-carousel__test-task)
+- [Live Site URL](https://hma-3.github.io/img-carousel__test-task/)
 
 ## Project Setup
+
+**Node version - 22.13.1**
+
+### Instal extensions for code formatting
+
+- ESLint - [for VSCode](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+
+### Instal packages
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### Run project locally
 
 ```sh
-npm run dev
+npm start
 ```
 
-### Type-Check, Compile and Minify for Production
+## Built with
 
-```sh
-npm run build
-```
+- [Vite](https://vite.dev)
+- [Vue 3](https://vuejs.org)
+- CSS + SCSS
+- BEM methodology
+- [Axios](https://axios-http.com) - fetching data
+- [Phosphor](https://phosphoricons.com) - icons
 
-### Lint with [ESLint](https://eslint.org/)
+## Author
 
-```sh
-npm run lint
-```
+- GitHub - [hma-3](https://github.com/hma-3)
+- LinkedIn - [Mariia Hula](www.linkedin.com/in/mariia-hula-014001332)
+- Telegram - [mariia_hula](https://t.me/mariia_hula)
+- E-mail - [mariia.hula.work@gmail.com](mailto:mariia.hula.work@gmail.com)
