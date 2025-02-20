@@ -1,85 +1,85 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import { ref, onMounted } from 'vue'
+import * as imagesApi from './api/images'
+import { Image } from './types/images.ts'
+import ImageCarousel from './components/ImageCarousel.vue'
+import { PhLinkedinLogo, PhGithubLogo, PhTelegramLogo } from '@phosphor-icons/vue'
+
+const images = ref<Image[]>([])
+const isLoading = ref(false)
+const errorMessage = ref<string | null>(null)
+
+onMounted(async () => {
+  try {
+    errorMessage.value = null
+    isLoading.value = true
+
+    images.value = await imagesApi.getListImages({ limit: 15 })
+  } catch (error) {
+    errorMessage.value = error
+  } finally {
+    isLoading.value = false
+  }
+})
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+  <main class="main">
+    <div class="container">
+      <h1 class="header">Image Carousel</h1>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+      <p v-if="errorMessage">Something went wrong. Error: {{ errorMessage }}</p>
 
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
+      <p v-if="isLoading">Is loading...</p>
+      <ImageCarousel v-else :images="images" />
     </div>
-  </header>
+  </main>
 
-  <RouterView />
+  <footer class="footer">
+    <div class="container">
+      <p class="footer__content">Made by Mariia Hula</p>
+
+      <div class="footer__social">
+        <a href="https://github.com/hma-3" target="_blank">
+          <PhGithubLogo :size="24" weight="fill" />
+        </a>
+
+        <a href="https://www.linkedin.com/in/mariia-hula-014001332/" target="_blank">
+          <PhLinkedinLogo :size="24" weight="fill" />
+        </a>
+
+        <a href="https://t.me/mariia_hula" target="_blank">
+          <PhTelegramLogo :size="24" weight="fill" />
+        </a>
+      </div>
+    </div>
+  </footer>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+<style lang="scss" scoped>
+.main {
+  padding-block: 24px;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
+.header {
   text-align: center;
-  margin-top: 2rem;
+  margin-bottom: 16px;
 }
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
+.footer {
+  padding-block: 24px;
 
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
+  background-color: var(--color-background-mute);
 
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
+  &__content {
+    text-align: center;
+    margin-bottom: 8px;
+  }
 
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
+  &__social {
     display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
+    justify-content: center;
+    gap: 16px;
   }
 }
 </style>

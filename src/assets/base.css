@@ -19,6 +19,9 @@
   --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
   --vt-c-text-dark-1: var(--vt-c-white);
   --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
+
+  --vt-c-accent-dark: #beb8eb;
+  --vt-c-accent-light: #8806CE;
 }
 
 /* semantic color variables for this project */
@@ -32,6 +35,8 @@
 
   --color-heading: var(--vt-c-text-light-1);
   --color-text: var(--vt-c-text-light-1);
+
+  --color-accent: var(--vt-c-accent-light);
 
   --section-gap: 160px;
 }
@@ -47,6 +52,8 @@
 
     --color-heading: var(--vt-c-text-dark-1);
     --color-text: var(--vt-c-text-dark-2);
+
+    --color-accent: var(--vt-c-accent-dark);
   }
 }
 
@@ -58,13 +65,21 @@
   font-weight: normal;
 }
 
+h1,
+h2 {
+  color: var(--color-heading);
+}
+
 body {
   min-height: 100vh;
+
   color: var(--color-text);
   background: var(--color-background);
+
   transition:
     color 0.5s,
     background-color 0.5s;
+
   line-height: 1.6;
   font-family:
     Inter,
@@ -81,6 +96,7 @@ body {
     sans-serif;
   font-size: 15px;
   text-rendering: optimizeLegibility;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
